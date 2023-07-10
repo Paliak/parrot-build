@@ -3,27 +3,27 @@
     path: /usr/local/share/ca-certificates/BurpSuiteCA.der
   register: burp_cert
   
-- name: "Copying Burp Script"
-  copy:
-    src: files/getburpcert.sh
-    dest: /tmp/getburpcert.sh
-    mode: 0744
-  when: burp_cert.stat.exists == False
+- name: "Install certificate"
+  block:
+    - name: "Start Burpsuite"
+      command: "java -Djava.awt.headless=true -jar /usr/share/burpsuite/burpsuite.jar < <(echo y)"
+      async: 300
+      poll: 0
 
-- name: "Executing bash script to Download CA Certificate"
-  shell:
-    /tmp/getburpcert.sh
-  when: burp_cert.stat.exists == False
+    - name: "Wait for BurpSuite to load."
+      ansible.builtin.wait_for:
+        port: 8080
 
-- name: "Copying CA Certificate to /usr/local/share/ca-certificates"
-  copy:
-    src: /tmp/cacert.der
-    dest: /usr/local/share/ca-certificates/BurpSuiteCA.der
-    owner: root
-    group: root
-    mode: 0644
-  become: true
-  become_method: sudo
+    - name: "Move certificate"
+      ansible.builtin.get_url:
+          url: http://127.0.0.1:8080/cert
+          dest: /usr/local/share/ca-certificates/BurpSuiteCA.der
+          owner: root
+          group: root
+          mode: 0644
+      register: cert_moved
+      become: true
+      become_method: sudo
   when: burp_cert.stat.exists == False
 
 - name: Create directory for Burp Suite extras
