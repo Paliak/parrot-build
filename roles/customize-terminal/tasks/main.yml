@@ -7,17 +7,35 @@
   shell:
     cmd: "git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
 
+- name: "Ensure kitty config directory exists"
+  file:
+    path: "{{ ansible_env.HOME }}/.config/kitty/kitty.conf"
+    state: directory
+    recurse: yes
+
 - name: "Copy kitty conf"
   copy:
     src: "{{ role_path }}/files/kitty.conf"
-    dest: "{{ ansible_env.HOME }}/.config/kitty/"
+    dest: "{{ ansible_env.HOME }}/.config/kitty/kitty.conf"
     
-- name: "Copy i3 conf"
-  copy:
-    src: "{{ role_path }}/files/configi3"
-    dest: "{{ ansible_env.HOME }}/.config/i3/"
+- name: "Ensure i3 config directory exists"
+  file:
+    path: "{{ ansible_env.HOME }}/.config/i3/
+    state: directory
+    recurse: yes
 
 - name: "Copy i3 conf"
   copy:
+    src: "{{ role_path }}/files/configi3"
+    dest: "{{ ansible_env.HOME }}/.config/i3/config"
+
+- name: "Ensure i3status config directory exists"
+  file:
+    path: "{{ ansible_env.HOME }}/.config/i3status/
+    state: directory
+    recurse: yes
+
+- name: "Copy i3status conf"
+  copy:
     src: "{{ role_path }}/files/configi3status"
-    dest: "{{ ansible_env.HOME }}/.config/i3status/"
+    dest: "{{ ansible_env.HOME }}/.config/i3status/config"

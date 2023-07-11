@@ -6,7 +6,6 @@
     - role: "roles/install-tools"
     - role: "roles/customize-browser"
     - role: "roles/configure-logging"
-    - role: "roles/customize-terminal"
     - role: gantsign.oh-my-zsh
       users:
         - username: "{{ ansible_user_id }}"
@@ -16,3 +15,4 @@
               - git
               - zsh-autosuggestions
               - zsh-syntax-highlighting
+    - role: "roles/customize-terminal"

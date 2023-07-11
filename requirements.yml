@@ -1,2 +1,6 @@
-- src: gantsign.oh-my-zsh
-- src: community.general
+---
+collections:
+- name: community.general
+
+roles:
+  - name: gantsign.oh-my-zsh
