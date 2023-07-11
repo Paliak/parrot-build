@@ -1,23 +1,12 @@
 ---
-- name: "Install zsh autosuggestions plugin"
-  shell:
-    cmd: "git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
-
-- name: "Install zsh autosuggestions plugin"
-  shell:
-    cmd: "git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
-
-- name: "Copy kitty conf"
-  copy:
-    src: "{{ role_path }}/files/kitty.conf"
-    dest: "{{ ansible_env.HOME }}/.config/kitty/"
-    
-- name: "Copy i3 conf"
-  copy:
-    src: "{{ role_path }}/files/configi3"
-    dest: "{{ ansible_env.HOME }}/.config/i3/"
-
-- name: "Copy i3 conf"
-  copy:
-    src: "{{ role_path }}/files/configi3status"
-    dest: "{{ ansible_env.HOME }}/.config/i3status/"
+- name: "Configuring eth"
+  nmcli:
+    conn_name: "System {{ ansible_default_ipv4.interface }}"
+    ifname: {{ ansible_default_ipv4.interface }}
+    type: ethernet
+    state: present
+    autoconnect: yes
+    ip4: 10.0.2.15
+    gw4: 10.0.2.2
+    dns4:
+      - 1.1.1.3
