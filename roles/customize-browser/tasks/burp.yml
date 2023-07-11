@@ -6,12 +6,13 @@
 - name: "Install certificate"
   block:
     - name: "Start Burpsuite"
-      command: "java -Djava.awt.headless=true -jar /usr/share/burpsuite/burpsuite.jar < <(echo y)"
-      async: 300
+      command: "/bin/bash -c 'timeout 45 /usr/lib/jvm/java-17-openjdk-amd64/bin/java -Djava.awt.headless=true -jar /usr/share/burpsuite/burpsuite.jar < <(echo y)'"
+      async: 120
       poll: 0
 
     - name: "Wait for BurpSuite to load."
       ansible.builtin.wait_for:
+        timeout: 120
         port: 8080
 
     - name: "Move certificate"
