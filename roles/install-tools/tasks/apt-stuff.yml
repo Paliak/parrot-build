@@ -17,6 +17,10 @@
       - ntpdate
       - flameshot
       - exiftool
+      - golang
+      - kitty
+      - i3
+      - fonts-cascadia-code
     state: latest
   become: true
   become_method: sudo

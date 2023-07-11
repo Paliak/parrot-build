@@ -4,17 +4,15 @@
   connection: local
   roles:
     - role: "roles/install-tools"
-    - role: "roles/configure-tmux"
-    - role: "roles/customize-terminal"
     - role: "roles/customize-browser"
     - role: "roles/configure-logging"
-    - role: gantsign.visual-studio-code
+    - role: "roles/customize-terminal"
+    - role: gantsign.oh-my-zsh
       users:
-        - username: "{{ ansible_user_id }}" 
-          visual_studio_code_extensions:
-            - streetsidesoftware.code-spell-checker
-            - ms-python.python
-            - DEVSENSE.phptools-vscode
-            - GitHub.copilot-nightly
-            - snyk-security.snyk-vulnerability-scanner
-
+        - username: "{{ ansible_user_id }}"
+          oh_my_zsh:
+            theme: robbyrussell
+            plugins:
+              - git
+              - zsh-autosuggestions
+              - zsh-syntax-highlighting
