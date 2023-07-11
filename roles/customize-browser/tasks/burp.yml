@@ -44,9 +44,4 @@
   become: true
   become_method: sudo
   loop: "{{ lookup('dict', burpsuite_extras_jars) }}"
-  
-- name: Copy BurpSuite Community Config
-  template:
-    src: "templates/UserConfigCommunity.json.j2"
-    dest: "/home/{{ ansible_user_id }}/.BurpSuite/UserConfigCommunity.json"
-
+ 

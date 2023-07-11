@@ -21,6 +21,7 @@
       - kitty
       - i3
       - fonts-cascadia-code
+      - dmenu
     state: latest
   become: true
   become_method: sudo
