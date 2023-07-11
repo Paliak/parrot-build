@@ -1,6 +1,6 @@
 ---
 - name: "Configuring eth"
-  nmcli:
+  community.general.nmcli:
     conn_name: "System {{ ansible_default_ipv4.interface }}"
     ifname: {{ ansible_default_ipv4.interface }}
     type: ethernet
