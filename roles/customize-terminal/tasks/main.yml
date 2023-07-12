@@ -9,7 +9,7 @@
 
 - name: "Ensure kitty config directory exists"
   file:
-    path: "{{ ansible_env.HOME }}/.config/kitty/kitty.conf"
+    path: "{{ ansible_env.HOME }}/.config/kitty"
     state: directory
     recurse: yes
 
@@ -20,7 +20,7 @@
     
 - name: "Ensure i3 config directory exists"
   file:
-    path: "{{ ansible_env.HOME }}/.config/i3/
+    path: "{{ ansible_env.HOME }}/.config/i3"
     state: directory
     recurse: yes
 
@@ -31,7 +31,7 @@
 
 - name: "Ensure i3status config directory exists"
   file:
-    path: "{{ ansible_env.HOME }}/.config/i3status/
+    path: "{{ ansible_env.HOME }}/.config/i3status"
     state: directory
     recurse: yes
 
@@ -39,3 +39,4 @@
   copy:
     src: "{{ role_path }}/files/configi3status"
     dest: "{{ ansible_env.HOME }}/.config/i3status/config"
+    
