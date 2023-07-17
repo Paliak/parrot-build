@@ -12,6 +12,7 @@ general {
 }
 
 order += "ethernet _first_"
+order += "ethernet tun0"
 order += "disk /"
 order += "load"
 order += "memory"
@@ -20,6 +21,11 @@ order += "tztime local"
 ethernet _first_ {
         format_up = "E: %ip "
         format_down = "E: down"
+}
+
+ethernet tun0 {
+        format_up = "V: %ip "
+        format_down = "V: down"
 }
 
 disk "/" {
