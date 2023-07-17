@@ -1,5 +1,7 @@
 ---
 burpsuite_extras_dir: "/usr/local/lib/BurpSuite"
+burpsuite_cert_path: "/usr/local/share/ca-certificates/BurpSuiteCA.der"
+burpsuite_timeout: 60
 burpsuite_extras_jars:
   jruby:
     jar: jruby-complete.jar

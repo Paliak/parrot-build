@@ -1,4 +1,19 @@
 ---
+- name: "Refresh font cache"
+  shell:
+    cmd: 'fc-cache -f -v'
+  become: true
+  become_method: sudo
+
+- name: "Install Oh My Zsh"
+  shell:
+    cmd: 'sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"'
+
+- name: "Copy .zshrc"
+  copy:
+    src: "{{ role_path }}/files/.zshrc"
+    dest: "{{ ansible_env.HOME }}/.zshrc"
+
 - name: "Install zsh autosuggestions plugin"
   shell:
     cmd: "git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
@@ -39,4 +54,10 @@
   copy:
     src: "{{ role_path }}/files/configi3status"
     dest: "{{ ansible_env.HOME }}/.config/i3status/config"
+    
+- name: "Set zsh as defualt shell"
+  shell:
+    cmd: "chsh -s /bin/zsh ; chsh -s /bin/zsh {{ ansible_user_id }}"
+  become: true
+  become_method: sudo
     
