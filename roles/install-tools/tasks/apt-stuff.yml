@@ -23,6 +23,13 @@
       - fonts-cascadia-code
       - dmenu
       - zsh
+      - openvpn
+      - ftp
+      - awscli
+      - feroxbuster
+      - seclists
+      - docker
+      - docker-compose
     state: latest
   become: true
   become_method: sudo
