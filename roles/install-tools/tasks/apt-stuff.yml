@@ -26,7 +26,6 @@
       - openvpn
       - ftp
       - awscli
-      - feroxbuster
       - seclists
       - docker
       - docker-compose
