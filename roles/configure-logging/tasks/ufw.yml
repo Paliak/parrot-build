@@ -10,7 +10,7 @@
 - name: "Configure UFW"
   ufw:
     state: enabled
-    policy: allow
+    policy: deny
   become: yes
   become_method: sudo
 
