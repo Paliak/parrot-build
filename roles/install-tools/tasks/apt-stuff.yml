@@ -29,6 +29,7 @@
       - seclists
       - docker
       - docker-compose
+      - chrony
     state: latest
   become: true
   become_method: sudo
