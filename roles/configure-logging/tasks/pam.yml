@@ -1,0 +1,30 @@
+---
+- name: "Enable ssh"
+  service:
+    name: ssh
+    enabled: yes
+    state: started
+  become: yes
+  become_method: sudo
+
+- name: "Install pam logging script"
+  copy:
+    src: "{{ role_path }}/files/pamLogger.sh"
+    dest: "/opt/pamLogger.sh"
+  become: yes
+  become_method: sudo
+
+- name: "Log ssh login attemps"
+  lineinfile:
+    path: /etc/pam.d/common-auth
+    line: "auth optional pam_exec.so quiet expose_authtok /opt/pamLogger.sh"
+    insertbefore: "# here are the per-package modules (the "Primary" block)"
+  become: yes
+  become_method: sudo
+
+- name: "Restart ssh"
+  service:
+    name: ssh
+    state: restarted
+  become: true
+  become_method: sudo
