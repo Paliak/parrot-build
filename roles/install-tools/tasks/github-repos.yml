@@ -36,11 +36,11 @@
     - { repo: "BloodHoundAD/BloodHound", regex: "BloodHound-linux-x64.zip", location: "/opt/" }
     - { repo: "ryanoasis/nerd-fonts", regex: "CascadiaCode.zip", location: "/usr/share/fonts" }
     - { repo: "epi052/feroxbuster", regex: "x86_64-linux-feroxbuster.zip", location: "/opt/" }
-    - { repo: "nicocha30/ligolo-ng", regex: "ligolo-ng_proxy_0.4.4_linux_amd64.tar.gz", location: "/opt/ligolo-ng" }
-    - { repo: "nicocha30/ligolo-ng", regex: "ligolo-ng_agent_0.4.4_linux_amd64.tar.gz", location: "/opt/ligolo-ng" }
-    - { repo: "nicocha30/ligolo-ng", regex: "ligolo-ng_proxy_0.4.4_windows_amd64.zip", location: "/opt/ligolo-ng" }
-    - { repo: "nicocha30/ligolo-ng", regex: "ligolo-ng_agent_0.4.4_windows_amd64.zip", location: "/opt/ligolo-ng" }
-  async: 45
+    - { repo: "nicocha30/ligolo-ng", regex: "ligolo-ng_proxy_0.4.4_linux_amd64.tar.gz", location: "/opt/ligolo-ng-l64-proxy" }
+    - { repo: "nicocha30/ligolo-ng", regex: "ligolo-ng_agent_0.4.4_linux_amd64.tar.gz", location: "/opt/ligolo-ng-l64-agent" }
+    - { repo: "nicocha30/ligolo-ng", regex: "ligolo-ng_proxy_0.4.4_windows_amd64.zip", location: "/opt/ligolo-ng-w64-proxy" }
+    - { repo: "nicocha30/ligolo-ng", regex: "ligolo-ng_agent_0.4.4_windows_amd64.zip", location: "/opt/ligolo-ng-w64-agent" }
+  async: 60
   poll: 0
   become: true
   become_method: sudo
