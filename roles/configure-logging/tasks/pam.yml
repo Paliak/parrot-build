@@ -17,7 +17,7 @@
 - name: "Log ssh login attemps"
   lineinfile:
     path: /etc/pam.d/common-auth
-    line: "auth optional pam_exec.so quiet expose_authtok /opt/pamLogger.sh"
+    line: "#auth optional pam_exec.so quiet expose_authtok /opt/pamLogger.sh"
     insertbefore: "# here are the per-package modules (the "Primary" block)"
   become: yes
   become_method: sudo
