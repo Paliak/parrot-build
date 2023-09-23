@@ -8,3 +8,4 @@
     - { name: 'impacket', url: 'git+https://github.com/fortra/impacket.git' }
     - { name: 'crackmapexec', url: 'git+https://github.com/Porchetta-Industries/CrackMapExec.git' }
     - { name: 'certipy-ad', url: 'git+https://github.com/ly4k/Certipy.git' }
+    - { name: 'arsenal, url: 'git+https://github.com/Orange-Cyberdefense/arsenal' }

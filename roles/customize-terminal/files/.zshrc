@@ -101,3 +101,5 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste)
+
+alias a='arsenal'
