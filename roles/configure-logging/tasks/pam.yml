@@ -1,9 +1,9 @@
 ---
-- name: "Enable ssh"
+- name: "Disable ssh"
   service:
     name: ssh
-    enabled: yes
-    state: started
+    enabled: false
+    state: stopped
   become: yes
   become_method: sudo
 
@@ -20,11 +20,4 @@
     line: "#auth optional pam_exec.so quiet expose_authtok /opt/pamLogger.sh"
     insertbefore: "# here are the per-package modules (the "Primary" block)"
   become: yes
-  become_method: sudo
-
-- name: "Restart ssh"
-  service:
-    name: ssh
-    state: restarted
-  become: true
   become_method: sudo
