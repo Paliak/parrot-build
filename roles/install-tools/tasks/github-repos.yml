@@ -12,6 +12,7 @@
     - { repo: "https://github.com/AdrianVollmer/PowerSploit", location: "/opt/PowerSploitAdrianVollmer" }
     - { repo: "https://github.com/61106960/adPEAS", location: "/opt/adPEAS" }
     - { repo: "https://github.com/ly4k/Certipy", location: "/opt/Certipy" }
+    - { repo: "https://github.com/NetSPI/PowerHuntShares", location: "/opt/PowerHuntShares" }
   become: true
   become_method: sudo
 
@@ -46,7 +47,8 @@
     - { repo: "nicocha30/ligolo-ng", regex: "ligolo-ng_proxy_\d\.\d\.\d_windows_amd64.zip", location: "/opt/ligolo/" }
     - { repo: "nicocha30/ligolo-ng", regex: "ligolo-ng_agent_\d\.\d\.\d_windows_amd64.zip", location: "/opt/ligolo/" }
     - { repo: "NationalSecurityAgency/ghidra", regex: "ghidra_.+_PUBLIC_.+zip", location: "/opt/ghidra" }
-    - { repo: "/robiot/rustcat", regex: "rcat-.+-linux-x86_64", location: "/opt/" }
+    - { repo: "robiot/rustcat", regex: "rcat-.+-linux-x86_64", location: "/opt/" }
+    - { repo: "SnaffCon/Snaffler", regex: "Snaffler", location: "/opt/" }
   async: 60
   poll: 0
   become: true
