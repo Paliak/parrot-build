@@ -6,6 +6,12 @@
   loop:
     - { repo: "https://github.com/Flangvik/SharpCollection", location: "/opt/SharpCollection" }
     - { repo: "https://github.com/danielmiessler/SecLists", location: "/opt/SecLists" }
+    - { repo: "https://github.com/lgandx/Responder", location: "/opt/Responder" }
+    - { repo: "https://github.com/PowerShellMafia/PowerSploit", location: "/opt/PowerSploitPowerShellMafia" }
+    - { repo: "https://github.com/ZeroDayLab/PowerSploit", location: "/opt/PowerSploitZeroDayLab" }
+    - { repo: "https://github.com/AdrianVollmer/PowerSploit", location: "/opt/PowerSploitAdrianVollmer" }
+    - { repo: "https://github.com/61106960/adPEAS", location: "/opt/adPEAS" }
+    - { repo: "https://github.com/ly4k/Certipy", location: "/opt/Certipy" }
   become: true
   become_method: sudo
 
@@ -29,17 +35,18 @@
   loop:
     - { repo: "jpillora/chisel",  regex: "_linux_amd64.gz", location: "/opt/chisel" }
     - { repo: "jpillora/chisel",  regex: "_windows_amd64.gz", location: "/opt/chisel" }
-    #- { repo: "jpillora/chisel",  regex: "_darwin_amd64", location: "/opt/chisel", filename: "chisel_osx" }
     - { repo: "carlospolop/PEASS-ng",  regex: "linpeas.sh", location: "/opt/peas" }
     - { repo: "carlospolop/PEASS-ng",  regex: "winPEASx64.exe", location: "/opt/peas" }
     - { repo: "WithSecureLabs/chainsaw",  regex: "chainsaw_all_", location: "/opt/" }
     - { repo: "BloodHoundAD/BloodHound", regex: "BloodHound-linux-x64.zip", location: "/opt/" }
     - { repo: "ryanoasis/nerd-fonts", regex: "CascadiaCode.zip", location: "/usr/share/fonts" }
     - { repo: "epi052/feroxbuster", regex: "x86_64-linux-feroxbuster.zip", location: "/opt/" }
-    - { repo: "nicocha30/ligolo-ng", regex: "ligolo-ng_proxy_0.4.4_linux_amd64.tar.gz", location: "/opt/ligolo-ng-l64-proxy" }
-    - { repo: "nicocha30/ligolo-ng", regex: "ligolo-ng_agent_0.4.4_linux_amd64.tar.gz", location: "/opt/ligolo-ng-l64-agent" }
-    - { repo: "nicocha30/ligolo-ng", regex: "ligolo-ng_proxy_0.4.4_windows_amd64.zip", location: "/opt/ligolo-ng-w64-proxy" }
-    - { repo: "nicocha30/ligolo-ng", regex: "ligolo-ng_agent_0.4.4_windows_amd64.zip", location: "/opt/ligolo-ng-w64-agent" }
+    - { repo: "nicocha30/ligolo-ng", regex: "ligolo-ng_proxy_\d\.\d\.\d_linux_amd64\.tar\.gz", location: "/opt/ligolo/" }
+    - { repo: "nicocha30/ligolo-ng", regex: "ligolo-ng_agent_\d\.\d\.\d_linux_amd64\.tar\.gz", location: "/opt/ligolo/" }
+    - { repo: "nicocha30/ligolo-ng", regex: "ligolo-ng_proxy_\d\.\d\.\d_windows_amd64.zip", location: "/opt/ligolo/" }
+    - { repo: "nicocha30/ligolo-ng", regex: "ligolo-ng_agent_\d\.\d\.\d_windows_amd64.zip", location: "/opt/ligolo/" }
+    - { repo: "NationalSecurityAgency/ghidra", regex: "ghidra_.+_PUBLIC_.+zip", location: "/opt/ghidra" }
+    - { repo: "/robiot/rustcat", regex: "rcat-.+-linux-x86_64", location: "/opt/" }
   async: 60
   poll: 0
   become: true

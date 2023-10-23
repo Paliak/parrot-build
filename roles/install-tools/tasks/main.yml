@@ -1,6 +1,22 @@
 ---
+- name: "Download Sysinternals suite"
+  shell:
+    cmd: 'wget -q -P /tmp/ https://download.sysinternals.com/files/SysinternalsSuite.zip && mkdir /tmp/SysinternalsSuite && unzip /tmp/SysinternalsSuite.zip -d /opt/SysinternalsSuite'
+  become: true
+  become_method: sudo
+
+- name: "Install GEF"
+  shell:
+    cmd: 'bash -c "$(curl -fsSL https://gef.blah.cat/sh)"'
+
 - include: apt-stuff.yml
 - include: kerbrute.yml
 - include: github-repos.yml
 - include: python-tools.yml
 - include: gem-tools.yml
+
+- name: "Make /opt/ accessible to user"
+  shell:
+    cmd: "export mainuser=$(cat /etc/passwd | grep sh | tail -n 1 | awk -F ':' '{print $1}') && chmod -R 755 /opt && chown -R $mainuser:$mainuser /opt"
+  become: true
+  become_method: sudo
