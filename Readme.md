@@ -5,8 +5,7 @@
 * Install Ansible (pip3 install ansible)
 * Clone and enter the repo (git clone)
 * ansible-galaxy install -r requirements.yml
-* Make sure we have a sudo token (sudo whoami)
-* ansible-playbook main.yml
+* ansible-playbook main.yml --ask-become-pass
 
 # Personal Changes
 * Add i3 tiling manager and related configs

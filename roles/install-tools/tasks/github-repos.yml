@@ -5,14 +5,7 @@
     dest: "{{ item.location }}"
   loop:
     - { repo: "https://github.com/Flangvik/SharpCollection", location: "/opt/SharpCollection" }
-    - { repo: "https://github.com/danielmiessler/SecLists", location: "/opt/SecLists" }
     - { repo: "https://github.com/lgandx/Responder", location: "/opt/Responder" }
-    - { repo: "https://github.com/PowerShellMafia/PowerSploit", location: "/opt/PowerSploitPowerShellMafia" }
-    - { repo: "https://github.com/ZeroDayLab/PowerSploit", location: "/opt/PowerSploitZeroDayLab" }
-    - { repo: "https://github.com/AdrianVollmer/PowerSploit", location: "/opt/PowerSploitAdrianVollmer" }
-    - { repo: "https://github.com/61106960/adPEAS", location: "/opt/adPEAS" }
-    - { repo: "https://github.com/ly4k/Certipy", location: "/opt/Certipy" }
-    - { repo: "https://github.com/NetSPI/PowerHuntShares", location: "/opt/PowerHuntShares" }
   become: true
   become_method: sudo
 
@@ -42,13 +35,12 @@
     - { repo: "BloodHoundAD/BloodHound", regex: "BloodHound-linux-x64.zip", location: "/opt/" }
     - { repo: "ryanoasis/nerd-fonts", regex: "CascadiaCode.zip", location: "/usr/share/fonts" }
     - { repo: "epi052/feroxbuster", regex: "x86_64-linux-feroxbuster.zip", location: "/opt/" }
-    - { repo: "nicocha30/ligolo-ng", regex: "ligolo-ng_proxy_\d\.\d\.\d_linux_amd64\.tar\.gz", location: "/opt/ligolo/" }
-    - { repo: "nicocha30/ligolo-ng", regex: "ligolo-ng_agent_\d\.\d\.\d_linux_amd64\.tar\.gz", location: "/opt/ligolo/" }
-    - { repo: "nicocha30/ligolo-ng", regex: "ligolo-ng_proxy_\d\.\d\.\d_windows_amd64.zip", location: "/opt/ligolo/" }
-    - { repo: "nicocha30/ligolo-ng", regex: "ligolo-ng_agent_\d\.\d\.\d_windows_amd64.zip", location: "/opt/ligolo/" }
+    - { repo: "nicocha30/ligolo-ng", regex: "ligolo-ng_proxy_.+_linux_amd64", location: "/opt/ligolo-linux/" }
+    - { repo: "nicocha30/ligolo-ng", regex: "ligolo-ng_agent_.+_linux_amd64", location: "/opt/ligolo-linux/" }
+    - { repo: "nicocha30/ligolo-ng", regex: "ligolo-ng_proxy_.+_windows_amd64", location: "/opt/ligolo-windows/" }
+    - { repo: "nicocha30/ligolo-ng", regex: "ligolo-ng_agent_.+_windows_amd64", location: "/opt/ligolo-windows/" }
     - { repo: "NationalSecurityAgency/ghidra", regex: "ghidra_.+_PUBLIC_.+zip", location: "/opt/ghidra" }
     - { repo: "robiot/rustcat", regex: "rcat-.+-linux-x86_64", location: "/opt/" }
-    - { repo: "SnaffCon/Snaffler", regex: "Snaffler", location: "/opt/" }
   async: 60
   poll: 0
   become: true

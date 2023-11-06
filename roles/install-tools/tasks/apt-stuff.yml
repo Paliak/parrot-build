@@ -13,7 +13,7 @@
 
 - name: "Add docker key"
   shell:
-    cmd: 'curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg; chmod a+r /etc/apt/keyrings/docker.gpg'
+    cmd: 'mkdir -p /etc/apt/keyrings; curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg; chmod a+r /etc/apt/keyrings/docker.gpg'
   become: true
   become_method: sudo
 
@@ -23,21 +23,20 @@
   become: true
   become_method: sudo
 
-- name: "Updating apt repo/cache"
-  apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+- name: "Update system"
+  ansible.builtin.apt:
+    update_cache: yes
+    upgrade: dist
   become: true
   become_method: sudo
 
-- name: "Upgrade all packages"
-  apt: upgrade=yes force_apt_get=yes
-  become: true
-  become_method: sudo
 
 - name: "Installing Packages"
   package:
     name:
-      - jq
+      - python3-full
       - pipx
+      - jq
       - ntpdate
       - flameshot
       - exiftool
@@ -59,5 +58,6 @@
       - docker-buildx-plugin
       - docker-compose-plugin
     state: latest
+    update_cache: yes
   become: true
   become_method: sudo
