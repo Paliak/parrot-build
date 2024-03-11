@@ -11,19 +11,9 @@
     dns4:
       - 1.1.1.1
 
-- name: Remove unnecessary autostart entries
-  file:
-    path: '{{ item }}'
-    state: absent
-  with_items:
-    - /etc/xdg/autostart/blueman.desktop
-    - /etc/xdg/autostart/nm-applet.desktop
-    - /etc/xdg/autostart/mate-power-manager.desktop
-    - /etc/xdg/autostart/geoclue-demo-agent.desktop
-    - /etc/xdg/autostart/print-applet.desktop
-    - /etc/xdg/autostart/vmware-user.desktop
-  register: remove_autostart_result
-  failed_when: "No such file or directory"
+- name: "Remove unnecessary autostart entries"
+  shell:
+    cmd: 'rm -rf /etc/xdg/autostart/*'
   become: true
   become_method: sudo
 
