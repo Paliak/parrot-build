@@ -50,7 +50,6 @@
       - awscli
       - seclists
       - chrony
-      - powershell
       - docker-ce
       - docker-ce-cli
       - containerd.io
