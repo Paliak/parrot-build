@@ -50,6 +50,7 @@
       - awscli
       - seclists
       - chrony
+      - rsyslog
       - docker-ce
       - docker-ce-cli
       - containerd.io
