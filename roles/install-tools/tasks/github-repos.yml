@@ -34,6 +34,7 @@
     - { repo: "WithSecureLabs/chainsaw",  regex: "chainsaw_all_", location: "/opt/" }
     - { repo: "BloodHoundAD/BloodHound", regex: "BloodHound-linux-x64.zip", location: "/opt/" }
     - { repo: "ryanoasis/nerd-fonts", regex: "CascadiaCode.zip", location: "/usr/share/fonts" }
+    - { repo: "ryanoasis/nerd-fonts", regex: "CascadiaMono.zip ", location: "/usr/share/fonts" }
     - { repo: "epi052/feroxbuster", regex: "x86_64-linux-feroxbuster.zip", location: "/opt/" }
     - { repo: "nicocha30/ligolo-ng", regex: "ligolo-ng_proxy_.+_linux_amd64", location: "/opt/ligolo-linux/" }
     - { repo: "nicocha30/ligolo-ng", regex: "ligolo-ng_agent_.+_linux_amd64", location: "/opt/ligolo-linux/" }

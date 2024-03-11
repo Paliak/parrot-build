@@ -43,7 +43,6 @@
       - golang
       - kitty
       - i3
-      - fonts-cascadia-code
       - dmenu
       - zsh
       - openvpn
