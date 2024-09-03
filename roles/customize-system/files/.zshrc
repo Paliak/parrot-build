@@ -102,8 +102,11 @@ source $ZSH/oh-my-zsh.sh
 #
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste)
 
-alias a='arsenal'
-
 alias py='python3'
 
+export LESS="FRX -x4"
 export PROMPT_EOL_MARK=''
+ZSH_HIGHLIGHT_STYLES[comment]=fg=245
+
+alias set_recording_prompt='export PROMPT="%D{[%T %D]} %(?:%{$fg_bold[green]%}%1{➜%} :%{$fg_bold[red]%}%1{➜%} ) %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)"'
+alias set_normal_prompt='export PROMPT="%(?:%{$fg_bold[green]%}%1{➜%} :%{$fg_bold[red]%}%1{➜%} ) %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)"'

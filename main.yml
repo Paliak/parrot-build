@@ -1,9 +1,7 @@
----
-- name: "Customizing Parrot"
+- name: Customizing Parrot
   hosts: localhost
   connection: local
+  become_method: sudo
   roles:
-    - role: "roles/install-tools"
-    - role: "roles/customize-browser"
-    - role: "roles/configure-logging"
-    - role: "roles/customize-terminal"
+    - role: roles/install-tools
+    - role: roles/customize-system

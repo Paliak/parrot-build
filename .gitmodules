@@ -1,0 +1,18 @@
+[submodule "roles/customize-system/files/.tmux/plugins/tmux"]
+	path = roles/customize-system/files/.tmux/plugins/tmux
+	url = https://git::@github.com/catppuccin/tmux
+[submodule "roles/customize-system/files/.tmux/plugins/tmux-continuum"]
+	path = roles/customize-system/files/.tmux/plugins/tmux-continuum
+	url = https://git::@github.com/tmux-plugins/tmux-continuum
+[submodule "roles/customize-system/files/.tmux/plugins/tmux-resurrect"]
+	path = roles/customize-system/files/.tmux/plugins/tmux-resurrect
+	url = https://git::@github.com/tmux-plugins/tmux-resurrect
+[submodule "roles/customize-system/files/.tmux/plugins/tmux-sensible"]
+	path = roles/customize-system/files/.tmux/plugins/tmux-sensible
+	url = https://git::@github.com/tmux-plugins/tmux-sensible
+[submodule "roles/customize-system/files/.tmux/plugins/tpm"]
+	path = roles/customize-system/files/.tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
+[submodule "roles/customize-system/files/.tmux/plugins/tmux-logging"]
+	path = roles/customize-system/files/.tmux/plugins/tmux-logging
+	url = https://github.com/Paliak/tmux-logging

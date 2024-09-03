@@ -1,22 +1,97 @@
----
-- name: "Download Sysinternals suite"
+- name: Upgrade system
   shell:
-    cmd: 'wget -q -P /tmp/ https://download.sysinternals.com/files/SysinternalsSuite.zip && mkdir /tmp/SysinternalsSuite && unzip /tmp/SysinternalsSuite.zip -d /opt/SysinternalsSuite'
+    cmd: 'parrot-upgrade'
   become: true
-  become_method: sudo
+    
+- name: Install apt packages
+  package:
+    name:
+      - python3-full
+      - pipx
+      - jq
+      - kitty
+      - i3
+      - i3status
+      - dmenu
+      - zsh
+      - openvpn
+      - seclists
+      - chrony
+      - rsyslog
+      - tmux
+      - vim
+      - golang
+      - openjdk-11-jdk
+      - bloodhound
+      - ntpdate
+      - exiftool
+      - golang
+    state: latest
+  ignore_errors: yes
+  become: true
 
-- name: "Install GEF"
+- name: Install GEF
   shell:
     cmd: 'bash -c "$(curl -fsSL https://gef.blah.cat/sh)"'
 
-- include: apt-stuff.yml
-- include: kerbrute.yml
-- include: github-repos.yml
-- include: python-tools.yml
-- include: gem-tools.yml
+- name: Ensure the ToolRepositories directory exists
+  file:
+    path: '{{ ansible_env.HOME }}/ToolRepositories'
+    state: directory
 
-- name: "Make /opt/ accessible to user"
+- import_tasks: setup-burpsuite.yml
+- import_tasks: install-sysinternals.yml
+- import_tasks: install-kerbrute.yml
+- import_tasks: install-ligolong.yml
+
+- name: Install feroxbuster
   shell:
-    cmd: "export mainuser=$(cat /etc/passwd | grep sh | tail -n 1 | awk -F ':' '{print $1}') && chmod -R 755 /opt && chown -R $mainuser:$mainuser /opt"
+    cmd: 'bash -c "curl -sL https://raw.githubusercontent.com/epi052/feroxbuster/main/install-nix.sh | bash -s $HOME/.local/bin"'
+
+- name: Downlaod useful github repositories
+  git:
+    repo: '{{ item.repo }}'
+    dest: '{{ item.location }}'
+  loop:
+    - repo: 'https://github.com/Flangvik/SharpCollection'
+      location: '{{ ansible_env.HOME }}/ToolRepositories/SharpCollection'
+    - repo: 'https://github.com/lgandx/Responder'
+      location: '{{ ansible_env.HOME }}/ToolRepositories/Responder'
+    - repo: 'https://github.com/urbanadventurer/username-anarchy'
+      location: '{{ ansible_env.HOME }}/ToolRepositories/username-anarchy'
+    - repo: 'https://github.com/dirkjanm/BloodHound.py'
+      location: '{{ ansible_env.HOME }}/ToolRepositories/BloodHound-python'
+    - repo: 'https://github.com/peass-ng/PEASS-ng'
+      location: '{{ ansible_env.HOME }}/ToolRepositories/PEASS-ng'
+      
+- name: Install pipx tools
+  community.general.pipx:
+    name: '{{ item.name }}'
+    source: '{{ item.url }}'
+    state: latest
+  loop:
+    - { name: impacket, url: 'git+https://github.com/fortra/impacket.git' }
+    - { name: certipy-ad, url: 'git+https://github.com/ly4k/Certipy.git' }
+    - { name: NetExec, url: 'git+https://github.com/Pennyw0rth/NetExec' }
+      
+- name: Installing tools from Gems
+  gem:
+    name: '{{ item }}'
+    state: latest
+    user_install: false
+  loop:
+    - logger
+    - stringio
+    - winrm
+    - builder
+    - erubi
+    - gssapi
+    - gyoku
+    - httpclient
+    - logging
+    - little-plugger
+    - nori
+    - rubyntlm
+    - winrm-fs
+    - evil-winrm
   become: true
-  become_method: sudo

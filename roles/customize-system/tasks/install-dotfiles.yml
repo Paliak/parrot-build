@@ -1,0 +1,75 @@
+- name: Delete Oh My Zsh if it exists
+  file:
+    state: absent
+    path: '{{ ansible_env.HOME }}/.oh-my-zsh'
+
+- name: Install Oh My Zsh
+  shell:
+    cmd: bash -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+      
+- name: Copy .zshrc
+  copy:
+    src: '{{ role_path }}/files/.zshrc'
+    dest: '{{ ansible_env.HOME }}/.zshrc'
+    
+- name: Install zsh autosuggestions plugin
+  shell:
+    cmd: git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+      
+- name: Install zsh autosuggestions plugin
+  shell:
+    cmd: git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+      
+- name: Ensure kitty config directory exists
+  file:
+    path: '{{ ansible_env.HOME }}/.config/kitty'
+    state: directory
+    recurse: true
+    
+- name: Copy kitty conf
+  copy:
+    src: '{{ role_path }}/files/kitty.conf'
+    dest: '{{ ansible_env.HOME }}/.config/kitty/kitty.conf'
+    
+- name: Ensure i3 config directory exists
+  file:
+    path: '{{ ansible_env.HOME }}/.config/i3'
+    state: directory
+    recurse: true
+    
+- name: Copy i3 conf
+  copy:
+    src: '{{ role_path }}/files/configi3'
+    dest: '{{ ansible_env.HOME }}/.config/i3/config'
+    
+- name: Ensure i3status config directory exists
+  file:
+    path: '{{ ansible_env.HOME }}/.config/i3status'
+    state: directory
+    recurse: true
+    
+- name: Copy i3status conf
+  copy:
+    src: '{{ role_path }}/files/configi3status'
+    dest: '{{ ansible_env.HOME }}/.config/i3status/config'
+    
+- name: Copy tmux conf
+  copy:
+    src: '{{ role_path }}/files/.tmux.conf'
+    dest: '{{ ansible_env.HOME }}/.tmux.conf'
+    
+- name: Copy tmux plugins
+  copy:
+    src: '{{ role_path }}/files/.tmux'
+    dest: '{{ ansible_env.HOME }}/'
+    mode: 0755
+
+- name: Copy vimrc
+  copy:
+    src: '{{ role_path }}/files/.vimrc'
+    dest: '{{ ansible_env.HOME }}/.vimrc'
+
+- name: Set zsh as defualt shell
+  shell:
+    cmd: 'chsh -s /bin/zsh ; chsh -s /bin/zsh {{ ansible_user_id }}'
+  become: true

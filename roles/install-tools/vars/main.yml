@@ -1,4 +1,5 @@
 ---
+burpsuite_start_command: "/usr/share/burpsuite/jre/bin/java -Djava.awt.headless=true -jar /usr/share/burpsuite/burpsuite_community.jar"
 burpsuite_extras_dir: "/usr/local/lib/BurpSuite"
 burpsuite_cert_path: "/usr/local/share/ca-certificates/BurpSuiteCA.der"
 burpsuite_timeout: 60

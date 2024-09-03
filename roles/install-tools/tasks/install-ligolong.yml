@@ -1,0 +1,8 @@
+- name: Downlaod useful github repositories
+  git:
+    repo: 'https://github.com/nicocha30/ligolo-ng'
+    dest: '{{ ansible_env.HOME }}/ToolRepositories/ligolo-ng'
+
+- name: Build ligolo-ng
+  shell:
+    cmd: cd {{ ansible_env.HOME }}/ToolRepositories/kerbrute && make windows && make linux

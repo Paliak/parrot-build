@@ -1,0 +1,13 @@
+- name: Downlaod useful github repositories
+  git:
+    repo: 'https://github.com/ropnop/kerbrute'
+    dest: '{{ ansible_env.HOME }}/ToolRepositories/kerbrute'
+
+- name: Build kerbrute
+  shell:
+    cmd: 'cd {{ ansible_env.HOME }}/ToolRepositories/kerbrute && make linux'
+    
+- name: Install kerbrute
+  shell:
+    cmd: ln -sf {{ ansible_env.HOME }}/ToolRepositories/kerbrute/dist/kerbrute_linux_amd64 /bin/kerbrute
+  become: true

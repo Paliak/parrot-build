@@ -1,33 +1,38 @@
----
-- name: "Configuring eth"
+- name: Configuring eth
   community.general.nmcli:
-    conn_name: 'System "Wired connection 1"'
-    ifname: "Wired connection 1"
+    conn_name: '{{ connection_name }}'
     type: ethernet
     state: present
-    autoconnect: yes
-    ip4: 10.0.2.15
-    gw4: 10.0.2.2
+    autoconnect: 'yes'
+    ip4: '{{ ipv4 }}'
+    gw4: '{{ gateway }}'
     dns4:
-      - 1.1.1.1
-
-- name: "Remove unnecessary autostart entries"
+      - '{{ dns }}'
+     
+- name: Remove unnecessary autostart entries
   shell:
-    cmd: 'rm -rf /etc/xdg/autostart/*'
+    cmd: rm -rf /etc/xdg/autostart/*
   become: true
-  become_method: sudo
-
+     
 - name: Disable unnecessary services
   service:
-    name:    '{{ item }}'
-    enabled: no
-    state:   stopped
+    name: '{{ item }}'
+    enabled: 'no'
+    state: stopped
   with_items:
     - ModemManager.service
     - opensnitch.service
     - upower.service
     - wpa_supplicant.service
-  register: service_disable_result
-  failed_when: "Could not find the requested service"
+  ignore_errors: yes
   become: true
-  become_method: sudo
+
+- name: Updating Firefox Policies
+  template:
+    src: templates/policies.json.j2
+    dest: /usr/share/firefox-esr/distribution/policies.json
+  become: true
+  
+- import_tasks: install-fonts.yml
+- import_tasks: setup-logging.yml
+- import_tasks: install-dotfiles.yml
