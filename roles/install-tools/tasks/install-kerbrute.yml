@@ -9,5 +9,5 @@
     
 - name: Install kerbrute
   shell:
-    cmd: ln -sf {{ ansible_env.HOME }}/ToolRepositories/kerbrute/dist/kerbrute_linux_amd64 /bin/kerbrute
+    cmd: ln -sf {{ ansible_env.HOME }}/ToolRepositories/kerbrute/dist/kerbrute_linux_amd64 $HOME/.local/bin
   become: true
