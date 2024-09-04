@@ -1,4 +1,4 @@
-- name: Downlaod useful github repositories
+- name: Downlaod ligolo-ng
   git:
     repo: 'https://github.com/nicocha30/ligolo-ng'
     dest: '{{ ansible_env.HOME }}/ToolRepositories/ligolo-ng'

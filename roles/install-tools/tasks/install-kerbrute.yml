@@ -1,4 +1,4 @@
-- name: Downlaod useful github repositories
+- name: Downlaod kerbrute
   git:
     repo: 'https://github.com/ropnop/kerbrute'
     dest: '{{ ansible_env.HOME }}/ToolRepositories/kerbrute'
