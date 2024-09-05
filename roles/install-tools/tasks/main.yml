@@ -43,6 +43,7 @@
 - import_tasks: install-sysinternals.yml
 - import_tasks: install-kerbrute.yml
 - import_tasks: install-ligolong.yml
+- import_tasks: install-sliver.yml
 
 - name: Install feroxbuster
   shell:

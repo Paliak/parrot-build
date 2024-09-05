@@ -1,0 +1,8 @@
+- name: Downlaod sliver
+  git:
+    repo: 'https://github.com/BishopFox/sliver.git'
+    dest: '{{ ansible_env.HOME }}/ToolRepositories/sliver'
+
+- name: Build sliver
+  shell:
+    cmd: cd {{ ansible_env.HOME }}/ToolRepositories/sliver && make
