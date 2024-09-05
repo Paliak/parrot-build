@@ -5,4 +5,4 @@
 
 - name: Build ligolo-ng
   shell:
-    cmd: cd {{ ansible_env.HOME }}/ToolRepositories/kerbrute && make windows && make linux
+    cmd: cd {{ ansible_env.HOME }}/ToolRepositories/ligolo-ng && make windows && make linux
