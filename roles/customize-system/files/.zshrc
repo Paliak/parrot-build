@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=:/home/pal/.local/bin:/home/pal/go/bin/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:/home/dev/.local/bin:/snap/bin:/usr/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games$PATH
+export PATH=:$HOME/.local/bin:$HOME/go/bin/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:/home/dev/.local/bin:/snap/bin:/usr/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
