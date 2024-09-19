@@ -2,7 +2,12 @@
   shell:
     cmd: 'parrot-upgrade'
   become: true
-    
+
+- name: cleanup apt sources
+  shell:
+    cmd: 'rm /etc/apt/sources.list'
+  become: true
+
 - name: Install apt packages
   package:
     name:
