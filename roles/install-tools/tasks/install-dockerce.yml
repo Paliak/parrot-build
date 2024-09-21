@@ -41,6 +41,7 @@
       - docker-buildx-plugin
       - docker-compose-plugin
     state: latest
+    update_cache: yes
   become: true
 
 - name: Pin docker repository
