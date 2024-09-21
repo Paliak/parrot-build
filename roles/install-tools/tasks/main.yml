@@ -6,6 +6,7 @@
 - name: cleanup apt sources
   shell:
     cmd: 'rm /etc/apt/sources.list'
+  ignore_errors: yes
   become: true
 
 - name: Install apt packages
