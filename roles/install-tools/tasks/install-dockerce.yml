@@ -1,0 +1,52 @@
+- name: Remove docker-ce conflicts
+  package:
+    name:
+      - docker.io
+      - docker-doc
+      - docker-compose
+      - podman-docker
+      - containerd
+      - runc
+    state: absent
+    autoremove: true
+    autoclean: true
+    update_cache: yes
+  ignore_errors: yes
+  become: true
+
+- name: Ensure docker-ce dependencies are present
+  package:
+    name:
+      - ca-certificates
+      - curl
+    state: latest
+  become: true
+
+- name: Add docker-ce repository
+  shell:
+    cmd: >
+      install -m 0755 -d /etc/apt/keyrings;
+      curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc;
+      chmod a+r /etc/apt/keyrings/docker.asc;
+      echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc]
+      https://download.docker.com/linux/debian bookworm stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
+  become: true
+
+- name: Ensure docker-ce dependencies are present
+  package:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
+    state: latest
+  become: true
+
+- name: Pin docker repository
+  shell:
+    cmd: |
+      echo "Package: *
+      Pin: release o=download.docker.com
+      Pin-Priority: 1001" > /etc/apt/preferences.d/99-docker.pref
+  become: true

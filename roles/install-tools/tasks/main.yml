@@ -32,6 +32,9 @@
       - exiftool
       - golang
     state: latest
+    autoremove: true
+    autoclean: true
+    update_cache: yes
   ignore_errors: yes
   become: true
 
@@ -49,6 +52,7 @@
 - import_tasks: install-kerbrute.yml
 - import_tasks: install-ligolong.yml
 - import_tasks: install-sliver.yml
+- import_tasks: install-dockerce.yml
 
 - name: Install feroxbuster
   shell:
