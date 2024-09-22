@@ -1,13 +1,14 @@
 - name: "lookup latest obsidian version"
-    uri:
-      url: https://api.github.com/repos/obsidianmd/obsidian-releases/releases/latest
-      return_content: true
-    register: obsidian_latest
+  uri:
+    url: https://api.github.com/repos/obsidianmd/obsidian-releases/releases/latest
+    return_content: true
+  register: obsidian_latest
 
-  - name: "installing obsidian {{ obsidian_latest.json.tag_name }}"
-    loop: "{{ obsidian_latest.json.assets }}"
-    when: item.name | regex_search("Obsidian-\d\.\d\.\d\.AppImage")
-    get_url:
-      url: "{{ item.browser_download_url }}"
-      dest: "/usr/local/bin"
-    become: true
+- name: "installing obsidian {{ obsidian_latest.json.tag_name }}"
+  loop: "{{ obsidian_latest.json.assets }}"
+  when: item.name | regex_search("Obsidian-\d\.\d\.\d\.AppImage")
+  get_url:
+    url: "{{ item.browser_download_url }}"
+    dest: /usr/local/bin/obsidian
+    mode: 0755
+  become: true

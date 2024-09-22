@@ -54,6 +54,7 @@
 - import_tasks: install-ligolong.yml
 - import_tasks: install-sliver.yml
 - import_tasks: install-dockerce.yml
+- import_tasks: install-obsidian.yml
 
 - name: Install feroxbuster
   shell:
