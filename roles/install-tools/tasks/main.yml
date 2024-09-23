@@ -75,6 +75,8 @@
       location: '{{ ansible_env.HOME }}/ToolRepositories/BloodHound-python'
     - repo: 'https://github.com/peass-ng/PEASS-ng'
       location: '{{ ansible_env.HOME }}/ToolRepositories/PEASS-ng'
+    - repo: 'https://github.com/AlessandroZ/LaZagne'
+      location: '{{ ansible_env.HOME }}/ToolRepositories/LaZagne'
       
 - name: Install pipx tools
   community.general.pipx:
