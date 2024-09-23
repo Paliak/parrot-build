@@ -32,6 +32,8 @@
       - ntpdate
       - exiftool
       - golang
+      - ftp
+      - nfs-common
     state: latest
     autoremove: true
     autoclean: true
@@ -109,6 +111,4 @@
     - rubyntlm
     - winrm-fs
     - evil-winrm
-    - nfs-common
-    - ftp
   become: true
