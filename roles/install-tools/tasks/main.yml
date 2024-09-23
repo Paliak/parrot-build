@@ -110,4 +110,5 @@
     - winrm-fs
     - evil-winrm
     - nfs-common
+    - ftp
   become: true
