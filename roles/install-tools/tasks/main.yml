@@ -34,6 +34,8 @@
       - golang
       - ftp
       - nfs-common
+      - freerdp3-x11
+      - freerdp2-x11
     state: latest
     autoremove: true
     autoclean: true
