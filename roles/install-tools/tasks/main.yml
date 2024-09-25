@@ -59,6 +59,7 @@
 - import_tasks: install-sliver.yml
 - import_tasks: install-dockerce.yml
 - import_tasks: install-obsidian.yml
+- import_tasks: install-powershell.yml
 
 - name: Install feroxbuster
   shell:

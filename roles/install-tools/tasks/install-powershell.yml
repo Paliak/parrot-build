@@ -1,0 +1,23 @@
+- name: Ensure powershell dependencies are present
+  package:
+    name:
+      - wget
+    state: latest
+    update_cache: yes
+  become: true
+
+- name: Add microsoft repository
+  shell:
+    cmd: >
+      wget https://packages.microsoft.com/config/debian/11/packages-microsoft-prod.deb;
+      dpkg -i packages-microsoft-prod.deb;
+      rm packages-microsoft-prod.deb;
+  become: true
+
+- name: Install powershell
+  package:
+    name:
+      - powershell
+    state: latest
+    update_cache: yes
+  become: true
