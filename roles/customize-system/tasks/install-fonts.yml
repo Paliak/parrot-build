@@ -1,23 +1,15 @@
-- name: Downloading https://github.com/ryanoasis/nerd-fonts/releases/latest/download/CascadiaCode.tar.xz
-  get_url:
-    url: https://github.com/ryanoasis/nerd-fonts/releases/latest/download/CascadiaCode.tar.xz
-    dest: /tmp/CascadiaCode.tar.xz
-
 - name: Extract CascadiaCode.tar.xz
   unarchive:
-    src: /tmp/CascadiaCode.tar.xz
+    src: https://github.com/ryanoasis/nerd-fonts/releases/latest/download/CascadiaCode.tar.xz
     dest: /usr/share/fonts
+    remote_src: yes
   become: true
 
-- name: Downloading https://github.com/ryanoasis/nerd-fonts/releases/latest/download/CascadiaMono.tar.xz
-  get_url:
-    url: https://github.com/ryanoasis/nerd-fonts/releases/latest/download/CascadiaMono.tar.xz
-    dest: /tmp/CascadiaMono.tar.xz
-    
 - name: Extract CascadiaMono.tar.xz
   unarchive:
-    src: /tmp/CascadiaMono.tar.xz
+    src: https://github.com/ryanoasis/nerd-fonts/releases/latest/download/CascadiaMono.tar.xz
     dest: /usr/share/fonts
+    remote_src: yes
   become: true
   
 - name: Refresh font cache
