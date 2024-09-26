@@ -108,8 +108,8 @@ export LESS="FRX -x4"
 export PROMPT_EOL_MARK=''
 ZSH_HIGHLIGHT_STYLES[comment]=fg=245
 
-alias set_recording_prompt='export PROMPT="%D{[%T %D]} %(?:%{$fg_bold[green]%}%1{%} :%{$fg_bold[red]%}%1{%}) %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)"'
-alias set_normal_prompt='export PROMPT="%(?:%{$fg_bold[green]%}%1{%} :%{$fg_bold[red]%}%1{%}) %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)"'
+alias set_recording_prompt='export PROMPT="%D{[%T %D]} %(?:%{$fg_bold[green]%}%1{%} :%{$fg_bold[red]%}%1{%} ) %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)"'
+alias set_normal_prompt='export PROMPT="%(?:%{$fg_bold[green]%}%1{%} :%{$fg_bold[red]%}%1{%} ) %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)"'
 
 # Fixes right arrow symbol missing from nerd font
 set_normal_prompt
