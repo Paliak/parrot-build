@@ -1,0 +1,8 @@
+- name: Downlaod chisel
+  git:
+    repo: 'https://github.com/jpillora/chisel'
+    dest: '{{ ansible_env.HOME }}/ToolRepositories/chisel'
+
+- name: Build chisel
+  shell:
+    cmd: 'go build && GOOS=windows GOARCH=amd64 go build'
