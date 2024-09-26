@@ -13,7 +13,7 @@ set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:CaskaydiaCove Nerd Font Mono 10
+font pango:CaskaydiaMono Nerd Font 10
 #font CaskaydiaMono 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
