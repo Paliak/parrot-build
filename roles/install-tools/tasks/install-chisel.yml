@@ -5,4 +5,5 @@
 
 - name: Build chisel
   shell:
+    chdir: '{{ ansible_env.HOME }}/ToolRepositories/chisel'
     cmd: 'go build && GOOS=windows GOARCH=amd64 go build'
