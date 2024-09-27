@@ -25,6 +25,17 @@
   shell:
     cmd: git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
+- name: Install Oh My Posh
+  shell:
+    cmd: bash -c "curl -s https://ohmyposh.dev/install.sh | bash -s"
+
+- name: Copy oh my posh config
+  copy:
+    src: '{{ role_path }}/files/oh-my-posh.config'
+    dest: '/opt/microsoft/powershell/7/Microsoft.PowerShell_profile.ps1'
+    force: true
+  become: true
+
 - name: Ensure kitty config directory exists
   file:
     path: '{{ ansible_env.HOME }}/.config/kitty'
