@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME=""
+ZSH_THEME="paliak"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -107,9 +107,3 @@ alias py='python3'
 export LESS="FRX -x4"
 export PROMPT_EOL_MARK=''
 ZSH_HIGHLIGHT_STYLES[comment]=fg=245
-
-alias set_recording_prompt='export PROMPT="%D{[%T %D]} %(?:%{$fg_bold[green]%}%1{%} :%{$fg_bold[red]%}%1{%} ) %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)"'
-alias set_normal_prompt='export PROMPT="%(?:%{$fg_bold[green]%}%1{%} :%{$fg_bold[red]%}%1{%} ) %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)"'
-
-# Fixes right arrow symbol missing from nerd font
-set_normal_prompt
