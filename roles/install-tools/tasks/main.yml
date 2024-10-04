@@ -94,7 +94,8 @@
     - { name: impacket, url: 'git+https://github.com/fortra/impacket.git' }
     - { name: certipy-ad, url: 'git+https://github.com/ly4k/Certipy.git' }
     - { name: NetExec, url: 'git+https://github.com/Pennyw0rth/NetExec' }
-    - { name: pypykatz, url: 'git+https://github.com/skelsec/pypykatz'}
+    - { name: pypykatz, url: 'git+https://github.com/skelsec/pypykatz' }
+    - { name: enum4linux-ng, url: 'git+https://github.com/cddmp/enum4linux-ng' }
       
 - name: Installing tools from Gems
   gem:
