@@ -37,6 +37,7 @@
       - freerdp3-x11
       - freerdp2-x11
       - krb5-user
+      - ncat
     state: latest
     autoremove: true
     autoclean: true
