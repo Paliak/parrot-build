@@ -86,6 +86,14 @@
     - repo: 'https://github.com/AlessandroZ/LaZagne'
       location: '{{ ansible_env.HOME }}/ToolRepositories/LaZagne'
       
+- name: Downloading dump_emails_imap.py
+  get_url:
+    url: '{{ item.url }}'
+    dest: '{{ item.location }}'
+  loop:
+    - url: 'https://gist.githubusercontent.com/s3rgeym/b7c6cec188430b6b57dec71a5240c277/raw/fa72dc7a0310a1b09d02e76be0ad417e5789800e/dump_emails.py'
+      location: '{{ ansible_env.HOME }}/ToolRepositories/dump_emails_imap.py'
+
 - name: Install pipx tools
   community.general.pipx:
     name: '{{ item.name }}'
