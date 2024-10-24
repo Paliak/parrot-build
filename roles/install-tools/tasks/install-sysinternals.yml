@@ -3,12 +3,8 @@
     path: '{{ ansible_env.HOME }}/ToolRepositories/SysinternalsSuite'
     state: directory
 
-- name: Downloading https://download.sysinternals.com/files/SysinternalsSuite.zip
-  get_url:
-    url: https://download.sysinternals.com/files/SysinternalsSuite.zip
-    dest: /tmp/SysinternalsSuite.zip
-
-- name: Extract SysinternalsSuite.zip
+- name: Downloading SysinternalsSuite.zip
   unarchive:
-    src: /tmp/SysinternalsSuite.zip
+    src: https://download.sysinternals.com/files/SysinternalsSuite.zip
     dest: '{{ ansible_env.HOME }}/ToolRepositories/SysinternalsSuite'
+    remote_src: yes
