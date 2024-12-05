@@ -6,4 +6,4 @@
 - name: Build chisel
   shell:
     chdir: '{{ ansible_env.HOME }}/ToolRepositories/chisel'
-    cmd: 'go build && GOOS=windows GOARCH=amd64 go build'
+    cmd: 'CGO_ENABLED=0 go build -ldflags "-s -w" && CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" && upx --brute chisel && upx --brute chisel.exe'
