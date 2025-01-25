@@ -1,0 +1,13 @@
+[user]
+    name = Paliak
+    email = 91493239+Paliak@users.noreply.github.com
+[init]
+    defaultBranch = main
+[core]
+    autocrlf = true
+[alias]
+    hunt = "!f() { \
+        for obj in $@; do \
+            git log --date=short --pretty=format:'%C(Yellow)%h%x09%C(Blue)%ad%x09%C(Reset)%s' -n1 --all --find-object=$(git hash-object \"$obj\") || true; \
+        done \
+    }; f"

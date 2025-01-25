@@ -80,6 +80,11 @@
     src: '{{ role_path }}/files/.vimrc'
     dest: '{{ ansible_env.HOME }}/.vimrc'
 
+- name: Copy .gitconfig
+  copy:
+    src: '{{ role_path }}/files/.gitconfig'
+    dest: '{{ ansible_env.HOME }}/.gitconfig'
+
 - name: Set zsh as defualt shell
   shell:
     cmd: 'chsh -s /bin/zsh ; chsh -s /bin/zsh {{ ansible_user_id }}'
