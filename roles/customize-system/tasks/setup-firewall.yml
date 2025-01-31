@@ -1,0 +1,38 @@
+- name: Configure UFW
+  ufw:
+    state: enabled
+    policy: deny
+  become: true
+
+- name: Allow Samba
+  ufw:
+    rule: allow
+    app: Samba
+  become: true
+
+- name: Allow Custom Ports
+  ufw:
+    rule: allow
+    port: "{{ item }}"
+    proto: tcp
+  loop:
+    - 8000
+    - 8080
+    - 9001
+    - 9002
+    - 9003
+  become: true
+
+- name: Log SYN packets in INPUT Chain
+  lineinfile:
+    path: /etc/ufw/after.rules
+    line: '-A ufw-after-input -p tcp --syn -j LOG --log-prefix "[UFW-SYN-LOG] "'
+    insertbefore: '# don''t delete the ''COMMIT'' line or these rules won''t be processed'
+  become: true
+  
+- name: Restart ufw
+  service:
+    name: ufw
+    state: restarted
+  become: true
+  

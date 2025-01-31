@@ -32,7 +32,8 @@
     src: templates/policies.json.j2
     dest: /usr/share/firefox-esr/distribution/policies.json
   become: true
-  
+
+- import_tasks: setup-firewall.yml
 - import_tasks: install-fonts.yml
 - import_tasks: setup-logging.yml
 - import_tasks: install-dotfiles.yml
