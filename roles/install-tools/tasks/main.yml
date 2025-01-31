@@ -105,6 +105,7 @@
     - { name: NetExec, url: 'git+https://github.com/Pennyw0rth/NetExec' }
     - { name: pypykatz, url: 'git+https://github.com/skelsec/pypykatz' }
     - { name: enum4linux-ng, url: 'git+https://github.com/cddmp/enum4linux-ng' }
+    - { name: bloodyAD, url: 'git+https://github.com/CravateRouge/bloodyAD' }
       
 - name: Installing tools from Gems
   gem:
