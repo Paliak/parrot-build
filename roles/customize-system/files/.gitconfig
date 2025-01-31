@@ -3,8 +3,6 @@
     email = 91493239+Paliak@users.noreply.github.com
 [init]
     defaultBranch = main
-[core]
-    autocrlf = true
 [alias]
     hunt = "!f() { \
         for obj in $@; do \
