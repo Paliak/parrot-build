@@ -4,6 +4,24 @@
     policy: deny
   become: true
 
+- name: Check if Samba UFW profile exists
+  stat:
+    path: /etc/ufw/applications.d/samba
+  register: samba_profile
+
+- name: Create Samba UFW profile
+  copy:
+    dest: /etc/ufw/applications.d/samba
+    content: |
+      [Samba]
+      title=LanManager-like file and printer server for Unix
+      description=The Samba software suite is a collection of programs that implements the SMB/CIFS protocol in Unix systems
+      ports=137,138/udp|139,445/tcp
+    mode: '0644'
+    owner: root
+    group: root
+  when: not samba_profile.stat.exists
+
 - name: Allow Samba
   ufw:
     rule: allow
