@@ -64,6 +64,7 @@
       owner: _laurel
       group: _laurel
     - path: /etc/laurel
+    - path: /usr/local/sbin/laurel
   become: true
   async: 15
   poll: 0
