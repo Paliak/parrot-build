@@ -12,7 +12,7 @@ git clone --recurse-submodules -j4 https://github.com/Paliak/parrot-build
 
 * Run the playbook
 ```bash
-ansible-playboook parrot-build/main.yml
+ansible-playbook parrot-build/main.yml
 ```
 
 # Personal Changes
