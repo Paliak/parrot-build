@@ -16,6 +16,14 @@
       ansible.builtin.wait_for:
         timeout: '{{ burpsuite_timeout }}'
         port: 8080
+    - name: Ensure ca-certificates directory exists
+      file:
+        path: '{{ burpsuite_cert_path | dirname }}'
+        state: directory
+        owner: root
+        group: root
+        recurse: true
+      become: true
     - name: Move certificate
       ansible.builtin.get_url:
         url: 'http://127.0.0.1:8080/cert'
