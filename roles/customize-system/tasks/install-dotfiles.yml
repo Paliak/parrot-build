@@ -89,3 +89,8 @@
   shell:
     cmd: 'chsh -s /bin/zsh ; chsh -s /bin/zsh {{ ansible_user_id }}'
   become: true
+
+- name: Copy addADMachine.sh
+  copy:
+    src: '{{ role_path }}/files/addADMachine.sh'
+    dest: {{ ansible_env.HOME }}/ToolRepositories/addADMachine.sh
