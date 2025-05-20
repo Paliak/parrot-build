@@ -93,4 +93,4 @@
 - name: Copy addADMachine.sh
   copy:
     src: '{{ role_path }}/files/addADMachine.sh'
-    dest: {{ ansible_env.HOME }}/ToolRepositories/addADMachine.sh
+    dest: '{{ ansible_env.HOME }}/ToolRepositories/addADMachine.sh'
