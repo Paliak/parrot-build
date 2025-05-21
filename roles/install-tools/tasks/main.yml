@@ -49,6 +49,10 @@
   shell:
     cmd: 'bash -c "$(curl -fsSL https://gef.blah.cat/sh)"'
 
+- name: Install UV
+  shell:
+    cmd: 'curl -LsSf https://astral.sh/uv/install.sh | sh'
+
 - name: Ensure the ToolRepositories directory exists
   file:
     path: '{{ ansible_env.HOME }}/ToolRepositories'
@@ -94,19 +98,18 @@
     - url: 'https://gist.githubusercontent.com/s3rgeym/b7c6cec188430b6b57dec71a5240c277/raw/fa72dc7a0310a1b09d02e76be0ad417e5789800e/dump_emails.py'
       location: '{{ ansible_env.HOME }}/ToolRepositories/dump_emails_imap.py'
 
-- name: Install pipx tools
-  community.general.pipx:
-    name: '{{ item.name }}'
-    source: '{{ item.url }}'
-    state: latest
-  loop:
-    - { name: impacket, url: 'git+https://github.com/fortra/impacket.git' }
-    - { name: certipy-ad, url: 'git+https://github.com/ly4k/Certipy.git' }
-    - { name: NetExec, url: 'git+https://github.com/Pennyw0rth/NetExec' }
-    - { name: pypykatz, url: 'git+https://github.com/skelsec/pypykatz' }
-    - { name: enum4linux-ng, url: 'git+https://github.com/cddmp/enum4linux-ng' }
-    - { name: bloodyAD, url: 'git+https://github.com/CravateRouge/bloodyAD' }
-    - { name: git-dumper, url: 'git+https://github.com/arthaud/git-dumper' }
+- name: Install python tools with uv
+  shell:
+    cmd: 'uv tool install {{ item }} --upgrade --force'
+  with_list:
+    - 'git+https://github.com/fortra/impacket.git'
+    - 'git+https://github.com/ly4k/Certipy.git'
+    - 'git+https://github.com/Pennyw0rth/NetExec'
+    - 'git+https://github.com/skelsec/pypykatz'
+    - 'git+https://github.com/cddmp/enum4linux-ng'
+    - 'git+https://github.com/CravateRouge/bloodyAD'
+    - 'git+https://github.com/arthaud/git-dumper'
+    - 'git+https://github.com/Paliak/PKINITtools'
       
 - name: Installing tools from Gems
   gem:
