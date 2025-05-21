@@ -67,6 +67,7 @@
 - import_tasks: install-obsidian.yml
 - import_tasks: install-powershell.yml
 - import_tasks: install-chisel.yml
+- import_tasks: install-aquatone.yml
 
 - name: Install feroxbuster
   shell:

@@ -1,0 +1,13 @@
+- name: Downlaod aquatone
+  git:
+    repo: 'https://github.com/shelld3v/aquatone'
+    dest: '{{ ansible_env.HOME }}/ToolRepositories/aquatone'
+
+- name: Build aquatone
+  shell:
+    cmd: 'cd {{ ansible_env.HOME }}/ToolRepositories/aquatone && CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o aquatone'
+    
+- name: Install aquatone
+  shell:
+    cmd: ln -sf {{ ansible_env.HOME }}/ToolRepositories/aquatone/aquatone $HOME/.local/bin
+  become: true
