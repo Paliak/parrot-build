@@ -90,6 +90,10 @@
       location: '{{ ansible_env.HOME }}/ToolRepositories/PEASS-ng'
     - repo: 'https://github.com/AlessandroZ/LaZagne'
       location: '{{ ansible_env.HOME }}/ToolRepositories/LaZagne'
+    - repo: 'https://github.com/RedSiege/EyeWitness'
+      location: '{{ ansible_env.HOME }}/ToolRepositories/EyeWitness'
+    - repo: 'https://github.com/Kevin-Robertson/Inveigh'
+      location: '{{ ansible_env.HOME }}/ToolRepositories/Inveigh'
       
 - name: Downloading dump_emails_imap.py
   get_url:
