@@ -113,3 +113,11 @@ alias set_normal_prompt='export PROMPT="%(?:%{$fg_bold[green]%}%1{%} :%{$fg_b
 
 # Fixes right arrow symbol missing from nerd font
 set_normal_prompt
+
+unsafessh() {
+    sshpass -p "${@: -1}" ssh \
+        -o "StrictHostKeyChecking=no" \
+        -o "UserKnownHostsFile=/dev/null" \
+        -o LogLevel=verbose \
+        "${@:1:${#@}-1}"
+}
